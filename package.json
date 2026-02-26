@@ -1,0 +1,19 @@
+{
+  "name": "faclon-backend-assignment",
+  "version": "1.0.0",
+  "description": "IoT Sensor Backend Service",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.6.3",
+    "mqtt": "^5.1.0" 
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
