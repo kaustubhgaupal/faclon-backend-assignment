@@ -1,8 +1,8 @@
-<img width="1394" height="854" alt="Screenshot 2026-02-26 085014" src="https://github.com/user-attachments/assets/86ebb41d-7dcd-4fdd-ae4d-58f46fbd2528" /># 🚀 IoT Sensor Backend Service
+# Node.js Internship Pre-Assessment – Sensor Backend Service
 
 This Node.js backend service was developed for the Faclon Labs Internship Pre-Assessment.
 
-The application ingests IoT sensor temperature readings, stores them in MongoDB Atlas, and provides an API to retrieve the latest reading for a specific device. It also includes a bonus MQTT subscriber for real-time data ingestion.
+The application ingests IoT sensor temperature readings, stores them in MongoDB Atlas (Free Tier), and provides an API to retrieve the latest reading for a specific device. It also includes a bonus MQTT subscriber for real-time data ingestion.
 
 ---
 
@@ -13,8 +13,8 @@ The application ingests IoT sensor temperature readings, stores them in MongoDB 
 - Mongoose schema validation
 - Automatic timestamp handling
 - MQTT Subscriber for real-time temperature updates
-- Proper HTTP status codes and error handling
-- MVC-based folder structure
+- Proper HTTP status codes and structured error handling
+- MVC-based scalable architecture
 
 ---
 
@@ -49,7 +49,7 @@ The application ingests IoT sensor temperature readings, stores them in MongoDB 
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone  https://github.com/kaustubhgaupal/faclon-backend-assignment.git
+git clone https://github.com/kaustubhgaupal/faclon-backend-assignment.git
 cd faclon-backend-assignment
 ```
 
@@ -69,22 +69,25 @@ MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/iot-db
 MQTT_BROKER_URL=mqtt://broker.hivemq.com:1883
 ```
 
-
 ### 4️⃣ Run the Server
 
 ```bash
 npm start
 ```
 
-Server will run at:
+Server runs at:
 
 ```
 http://localhost:3000
 ```
 
-<img width="907" height="275" alt="Screenshot 2026-02-26 091927" src="https://github.com/user-attachments/assets/e77f4a68-9fc0-4a9e-a148-02ae4c4908fe" />
+---
 
+## 🖥️ Server Startup Logs
 
+The application successfully connects to MongoDB Atlas and the MQTT broker.
+
+<img width="907" height="275" alt="Server Startup" src="https://github.com/user-attachments/assets/e77f4a68-9fc0-4a9e-a148-02ae4c4908fe" />
 
 ---
 
@@ -94,13 +97,12 @@ http://localhost:3000
 
 ### 1️⃣ Ingest Sensor Data
 
-**Endpoint:**
+**Endpoint**
 ```
 POST /api/sensor/ingest
 ```
 
-**Request Body:**
-
+**Request Body**
 ```json
 {
   "deviceId": "sensor-01",
@@ -109,7 +111,7 @@ POST /api/sensor/ingest
 }
 ```
 
-If `timestamp` is not provided, the server automatically uses current time.
+If `timestamp` is not provided, the server automatically uses the current time.
 
 ---
 
@@ -120,18 +122,17 @@ curl -X POST http://localhost:3000/api/sensor/ingest \
 -H "Content-Type: application/json" \
 -d '{"deviceId":"sensor-01","temperature":32.5}'
 ```
-<img width="1394" height="854" alt="Screenshot 2026-02-26 085014" src="https://github.com/user-attachments/assets/82575b8b-676f-4a80-9736-023ec6270be1" />
 
+<img width="1394" height="854" alt="POST Ingest" src="https://github.com/user-attachments/assets/82575b8b-676f-4a80-9736-023ec6270be1" />
 
 ---
 
 ### 2️⃣ Get Latest Reading
 
-**Endpoint:**
+**Endpoint**
 ```
 GET /api/sensor/:deviceId/latest
 ```
-
 
 Example:
 
@@ -139,9 +140,7 @@ Example:
 curl http://localhost:3000/api/sensor/sensor-01/latest
 ```
 
-<img width="1447" height="868" alt="Screenshot 2026-02-26 085146" src="https://github.com/user-attachments/assets/4d049822-0b70-4b66-a13b-fa9ba597a908" />
-
-
+<img width="1447" height="868" alt="GET Latest" src="https://github.com/user-attachments/assets/4d049822-0b70-4b66-a13b-fa9ba597a908" />
 
 ---
 
@@ -171,66 +170,32 @@ You can test using MQTTX or any MQTT client.
 
 ---
 
-## 📷 API Testing Screenshots
-
-(Place your screenshots inside an `images/` folder in your repo.)
-
-### 🔹 POST – Ingest Sensor Data
-
-![POST Ingest](images/post-ingest.png)
-
----
-
-### 🔹 GET – Latest Reading
-
-![GET Latest](images/get-latest.png)
-
----
-
-### 🔹 MongoDB Atlas Stored Data
-
-![MongoDB Atlas](images/mongodb-data.png)
-
----
-
 ## 🧠 Design Decisions
 
-- Followed MVC architecture for clean separation of concerns
+- Followed MVC architecture for separation of concerns
 - Used Mongoose schema validation
-- Implemented proper HTTP status codes (200, 400, 404, 500)
-- Used environment variables for configuration security
-- Designed for scalability and real-time ingestion support
+- Implemented structured error handling
+- Used environment variables for secure configuration
+- Designed for scalability and real-time ingestion
 
 ---
 
 ## 🗄️ Database
 
-MongoDB Atlas Free Tier Cluster  
-Mongoose is used for schema modeling and database interaction.
+- MongoDB Atlas Free Tier Cluster
+- Mongoose used for schema modeling and database interaction
 
 ---
 
 ## 🟢 Node Version
 
 Recommended:
-
 - Node.js v18+
 - Node.js v20 LTS
 
 ---
 
-## ✅ Submission Checklist
-
-- GitHub repository link
-- README with setup instructions
-- MongoDB Atlas Free Tier used
-- Curl examples included
-- Node.js 18+ compatible
-- Postman testing screenshots added
-
----
-
-### 👨‍💻 Author
+## 👨‍💻 Author
 
 Kaustubh Gaupal  
 Final Year CSE Student  
